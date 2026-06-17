@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="vendor/autoload.php"
+    colors="true"
+>
+    <testsuites>
+
+    <testsuite name="Repositories">
+        <directory>
+            tests/Repositories
+        </directory>
+    </testsuite>
+
+    <testsuite name="Services">
+        <directory>
+            tests/Services
+        </directory>
+    </testsuite>
+
+    <testsuite name="Controllers">
+        <directory>
+            tests/Controllers
+        </directory>
+    </testsuite>
+
+    <testsuite name="Helpers">
+        <directory>
+            tests/Helpers
+        </directory>
+    </testsuite>
+
+</testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </coverage>
+
+   <php>
+        <env name="DB_HOST" value="localhost"/>
+        <env name="DB_NAME" value="control_asistencias_qr"/>
+        <env name="DB_USER" value="root"/>
+        <env name="DB_PASSWORD" value="juan123"/>
+    </php>
+</phpunit>

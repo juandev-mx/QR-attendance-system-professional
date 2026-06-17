@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost";
+$host = "mysql";
 $dbname = "control_asistencias_qr";
 $user = "root";
 $password = "juan123"; 

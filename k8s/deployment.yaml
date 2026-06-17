@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qr-attendance-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qr-attendance-app
+  template:
+    metadata:
+      labels:
+        app: qr-attendance-app
+    spec:
+      containers:
+        - name: qr-attendance-app
+          image: qr-attendance-system:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+

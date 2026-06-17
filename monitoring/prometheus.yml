@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'qr-attendance-metrics'
+    metrics_path: '/api/metrics.php'
+    static_configs:
+      - targets: ['app:80']

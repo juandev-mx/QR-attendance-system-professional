@@ -49,11 +49,11 @@ jobs:
         run: |
           if [ -f "schema.sql" ]; then
             mysql -h 127.0.0.1 -u root -pjuan123 control_asistencias_qr < schema.sql
-          elif [ -f "database.sql" ]; then
-            mysql -h 127.0.0.1 -u root -pjuan123 control_asistencias_qr < database.sql
-          else
-            echo "No se encontró archivo SQL. Las tablas se asumen preexistentes."
           fi
+          if [ -f "seed.sql" ]; then
+            mysql -h 127.0.0.1 -u root -pjuan123 control_asistencias_qr < seed.sql
+          fi
+
 
       
       - name: Run PHPUnit

@@ -21,10 +21,10 @@ class AttendanceRepositoryTest extends TestCase
     {
 
     
-        $host = "localhost";
-        $dbname = "control_asistencias_qr";
-        $user = "root";
-        $password = "juan123";  
+        $host = getenv('DB_HOST') ?: '127.0.0.1'; 
+        $dbname = getenv('DB_NAME') ?: 'control_asistencias_qr';
+        $user = getenv('DB_USER') ?: 'root';
+        $password = getenv('DB_PASSWORD') ?: 'juan123';  
 
         $this->conexion = new PDO(
             "mysql:host=$host;dbname=$dbname", 

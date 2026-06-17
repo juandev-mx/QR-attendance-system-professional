@@ -13,21 +13,21 @@ class NotificationRepositoryTest extends TestCase
 
     protected function setUp(): void
     {
-        // 1. Cargamos el archivo de configuración externa para que inicialice la variable $conexion
+       
         require __DIR__ . '/../../config/database.php';
 
-        // 2. Asignamos la variable real creada por el script en lugar del valor del require
-        $this->conexion = $conexion;
+       $host = getenv('DB_HOST') ?: '127.0.0.1';
+        $dbname = getenv('DB_NAME') ?: 'control_asistencias_qr';
+        $user = getenv('DB_USER') ?: 'root';
+        $password = getenv('DB_PASSWORD') ?: 'juan123';
 
-        $this->repository =
-            new NotificationRepository(
-                $this->conexion
-            );
-    }
+        $this->conexion = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+        $this->repository = new \App\Repositories\NotificationRepository($this->conexion);
+    } 
 
     public function testCrearNotificacion()
     {
-        // Usamos una transacción para no llenar tu base de datos real de registros de prueba
+       
         $this->conexion->beginTransaction();
 
         try {

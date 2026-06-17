@@ -14,24 +14,21 @@ class CompanyRepositoryTest extends TestCase
 
     private CompanyRepository $repository;
 
-    protected function setUp(): void
+        protected function setUp(): void
     {
-        $this->conexion = new PDO(
-            "mysql:host=localhost;dbname=control_asistencias_qr",
-            "root",
-            "juan123"
-        );
+        $host = getenv('DB_HOST') ?: '127.0.0.1';
+        $dbname = getenv('DB_NAME') ?: 'control_asistencias_qr';
+        $user = getenv('DB_USER') ?: 'root';
+        $password = getenv('DB_PASSWORD') ?: 'juan123';
 
-        $this->conexion->setAttribute(
-            PDO::ATTR_ERRMODE,
-            PDO::ERRMODE_EXCEPTION
-        );
+        $this->conexion = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+        $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $this->repository =
-            new CompanyRepository(
-                $this->conexion
-            );
+        $this->repository = new \App\Repositories\CompanyRepository($this->conexion);
     }
+
+
+        
 
     public function testObtenerTodas()
     {

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   pull_request:
     branches:
       - main
@@ -12,6 +11,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: juan123
+          MYSQL_DATABASE: control_asistencias_qr
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     strategy:
       matrix:
@@ -34,5 +44,21 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
+    
+      - name: Initialize Database Schema
+        run: |
+          if [ -f "schema.sql" ]; then
+            mysql -h 127.0.0.1 -u root -pjuan123 control_asistencias_qr < schema.sql
+          elif [ -f "database.sql" ]; then
+            mysql -h 127.0.0.1 -u root -pjuan123 control_asistencias_qr < database.sql
+          else
+            echo "No se encontró archivo SQL. Las tablas se asumen preexistentes."
+          fi
+
+      
       - name: Run PHPUnit
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --configuration phpunit.xml
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PASSWORD: juan123
+

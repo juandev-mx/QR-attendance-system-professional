@@ -1,46 +1,38 @@
 name: PHPUnit Tests
 
 on:
-push:
-branches:
-- main
+  push:
+    branches:
+      - main
 
-pull_request:
-branches:
-- main
+  pull_request:
+    branches:
+      - main
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
 
-test:
+    strategy:
+      matrix:
+        php-version: [8.0]
 
-```
-runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-strategy:
-  matrix:
-    php-version: [8.0]
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: pdo_mysql
+          coverage: xdebug
 
-steps:
+      - name: Validate Composer
+        run: composer validate
 
-  - name: Checkout repository
-    uses: actions/checkout@v4
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
 
-  - name: Setup PHP
-    uses: shivammathur/setup-php@v2
-
-    with:
-      php-version: ${{ matrix.php-version }}
-
-      extensions: pdo_mysql
-
-      coverage: xdebug
-
-  - name: Validate Composer
-    run: composer validate
-
-  - name: Install dependencies
-    run: composer install --prefer-dist --no-progress
-
-  - name: Run PHPUnit
-    run: vendor/bin/phpunit
-```
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit

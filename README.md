@@ -479,6 +479,13 @@ Start application:
 docker compose up --build
 ```
 
+Installed packages include:
+
+- firebase/php-jwt
+- phpmailer/phpmailer
+- phpoffice/phpspreadsheet
+- phpunit/phpunit
+
 ---
 
 # Author

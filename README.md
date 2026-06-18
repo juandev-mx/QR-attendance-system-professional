@@ -502,7 +502,7 @@ Juan Carlos Reynoso Zúñiga
 
 <img width="959" height="474" alt="TableroKanban2" src="https://github.com/user-attachments/assets/9d1fca69-41a6-43ae-a824-c89b3e93521f" />
 
-<img width="959" height="472" alt="image" src="https://github.com/user-attachments/assets/de4d0794-d6e2-436e-adbd-f2e2c0e7f6b8" />
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/e92c171d-ae0c-4642-ac17-8df6e75f170e" />
 
 
 

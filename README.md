@@ -1,333 +1,516 @@
-# QR Attendance System: QR-Based Attendance Control System
+# QR Attendance System Professional
 
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=jsonwebtokens)
+![Build Status](https://github.com/juandev-mx/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
 
-##  Project Description
 
-The system manages employee attendance control through QR code scanning.
+## Enterprise QR-Based Attendance Management Platform
 
-The system automatically records employee entry and exit times and generates metrics for the Human Resources department.
+![PHP](https://img.shields.io/badge/PHP_8-777BB4?style=for-the-badge\&logo=php\&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL_8-4479A1?style=for-the-badge\&logo=mysql\&logoColor=white)
+![Composer](https://img.shields.io/badge/Composer-885630?style=for-the-badge\&logo=composer\&logoColor=white)
+![PHPUnit](https://img.shields.io/badge/PHPUnit-6C3483?style=for-the-badge\&logo=php\&logoColor=white)
+![Xdebug](https://img.shields.io/badge/Xdebug-86C232?style=for-the-badge)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge\&logo=github-actions\&logoColor=white)
 
-It includes features such as:
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge\&logo=kubernetes\&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge\&logo=prometheus\&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge\&logo=grafana\&logoColor=white)
 
-- QR code scanning for attendance registration
-- Admin panel for Human Resources
-- Automatic lateness detection
-- Real-time notifications
-- Analytical dashboard with attendance metrics
-- Automatic absence alert system
-- Multi-company architecture
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge\&logo=bootstrap\&logoColor=white)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge\&logo=chartdotjs\&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge\&logo=jsonwebtokens)
+![PHPMailer](https://img.shields.io/badge/PHPMailer-4CAF50?style=for-the-badge)
+
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge\&logo=git\&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
+![Agile](https://img.shields.io/badge/Agile-Scrum-blue?style=for-the-badge)
+![Kanban](https://img.shields.io/badge/Kanban-Project_Management-green?style=for-the-badge)
+![Gherkin](https://img.shields.io/badge/Gherkin-BDD-orange?style=for-the-badge)
+![Firebase JWT](https://img.shields.io/badge/Firebase_JWT-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![PhpSpreadsheet](https://img.shields.io/badge/PhpSpreadsheet-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+
+A professional attendance management platform built using PHP, MySQL, Docker, Kubernetes, GitHub Actions, PHPUnit, Prometheus and Grafana.
+
+The system allows organizations to automate employee attendance registration through QR code scanning while providing monitoring, analytics, automated reporting and DevOps practices.
+
 
 ---
 
-##  Objective
+## Project Overview
 
-Build a functional backend system that allows:
+This project was developed following Software Engineering, DevOps and Agile methodologies.
 
-- Automated attendance registration
-- Centralized employee management
-- Metrics and reports generation
-- Security through authentication
-- Scalability for multiple companies
+Main goals:
 
----
-
-##  Tech Stack
-
-
-| Area | Technology |
-|----------------------|--------------------------|
-| Backend | PHP |
-| Database | MySQL |
-| Frontend | HTML5 / CSS / JavaScript |
-| UI Framework | Bootstrap |
-| Charts | Chart.js |
-| QR Scanning | HTML5 QR Scanner |
-| Email Sending | PHPMailer |
-| Authentication | JWT |
-| Version Control | Git / GitHub |
+* Employee attendance management
+* QR-based attendance registration
+* Multi-company support
+* Automated lateness detection
+* Automated absence reporting
+* Real-time notifications
+* Dashboard analytics
+* Continuous Integration
+* Containerized deployment
+* Kubernetes orchestration
+* Monitoring and Observability
 
 ---
 
-##  Core Functionalities
+# System Architecture
 
-###  Employee Management
+The application follows a layered architecture.
 
-- Employee registration
-- Unique QR code generation per employee
-- Employee information management
-- Entry schedule assignment
+```text
+Controllers
+      ↓
+Services
+      ↓
+Repositories
+      ↓
+MySQL Database
+```
+
+### Controller Layer
+
+Handles HTTP requests and responses.
+
+Examples:
+
+* AttendanceController
+* CompanyController
+* EmployeeController
+* MetricsController
+
+### Service Layer
+
+Contains business logic.
+
+Examples:
+
+* AttendanceService
+* EmployeeService
+* CompanyService
+
+### Repository Layer
+
+Handles database access.
+
+Examples:
+
+* AttendanceRepository
+* EmployeeRepository
+* CompanyRepository
+* NotificationRepository
 
 ---
 
-###  Attendance Registration via QR
+# Core Features
 
-- QR code scanning via camera
-- Automatic clock-in time recording
-- Clock-out time recording
-- Duplicate prevention for the same day
+## Employee Management
+
+* Employee registration
+* Employee update
+* Employee lookup
+* QR assignment
+* Schedule assignment
 
 ---
 
-###  Automatic Lateness Detection
+## Attendance Registration
 
-The system compares the arrival time with the employee's assigned schedule.
+Employees register attendance using QR codes.
+
+Supported operations:
+
+* Entry registration
+* Exit registration
+* Duplicate prevention
+* Attendance validation
+
+---
+
+## Automatic Lateness Detection
+
+The system compares attendance registration time against the assigned entry schedule.
 
 Example:
 
 ```text
-Entry Schedule: 08:00
-Registration Time: 08:10
-Result: Late (Retardo)
-```
+Assigned Entry Time: 08:00
+Attendance Time: 08:15
 
-This allows for the generation of punctuality statistics.
-
----
-
-###  Real-Time Notifications
-
-When an employee registers their attendance:
-
-- A notification is generated
-- It automatically appears on the dashboard
-- Allows live monitoring of system activity
-
----
-
-###  HR Analytical Dashboard
-
-The administrative panel includes metrics such as:
-
-- Total employees
-- Attendance records for the day
-- Number of late arrivals
-- Absences for the day
-- Attendance history
-
-It also includes charts generated with **Chart.js** to visualize:
-
-- Attendance per day
-- Punctuality trends
-- Recent activity
-
----
-
-###  Automatic Absence Alert System
-
-The system includes a module that automatically detects employees who did not register their attendance for the day.
-
-At the end of the workday:
-
-1. The system queries the database
-2. Identifies employees without an attendance record
-3. Generates an automatic report
-4. Sends an email to the Human Resources department
-
-This process uses PHPMailer to send the report via SMTP.
-
-Example of generated email:
-
-> **Absence Report - 2026-03-29**
->
-> The following employees did not register attendance today:
->
-> - Juan Pérez
-> - María López
-> - Carlos Sánchez
-
-This allows Human Resources to detect absences without manually checking the system.
-
----
-
-##  Main System Modules
-
-###  Authentication
-
-- Administrator login
-- Route protection
-- Session handling or JWT
-
----
-
-###  Employee Management
-
-- Create employees
-- Generate unique QR code
-- Edit employee information
-- Consult attendance records
-
----
-
-###  Attendance Logs
-
-- QR Scanning
-- Automatic database recording
-- Duplicate validation
-- Lateness logging
-
----
-
-###  Dashboard
-
-- Administrative panel
-- Real-time statistics
-- Attendance table
-- Analytical charts
-
----
-
-##  Database
-
-Main system tables:
-
-### employees (empleados)
-
-
-| Field | Type |
-|------------------|---------|
-| id | INT |
-| first_name | VARCHAR |
-| last_name | VARCHAR |
-| qr_code | VARCHAR |
-| entry_time | TIME |
-
----
-
-### attendance (asistencias)
-
-
-| Field | Type |
-|--------------|---------|
-| id | INT |
-| employee_id | INT |
-| date | DATE |
-| clock_in | TIME |
-| clock_out | TIME |
-| is_late | BOOLEAN |
-
----
-
-### notifications (notificaciones)
-
-
-| Field | Type |
-|---------|----------|
-| id | INT |
-| message | TEXT |
-| date | DATETIME |
-| is_read | BOOLEAN |
-
----
-
-### companies (empresas)
-
-
-| Field | Type |
-|---------------|-----------|
-| id | INT |
-| name | VARCHAR |
-| email | VARCHAR |
-| registration_date | TIMESTAMP |
-
----
-
-##  Workflow
-
-1. The administrator registers employees in the system
-2. A unique QR code is generated for each employee
-3. The employee scans their QR code upon arrival
-4. The system automatically records the attendance
-5. Lateness is verified
-6. A notification is generated
-7. The dashboard updates metrics and charts
-
----
-
-##  Installation and Execution
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com
+Result:
+Late Arrival
 ```
 
 ---
 
-### 2. Import database
+## Real-Time Notifications
 
-Import the file:
+When an employee performs attendance actions:
 
-```bash
-attendance_queries.sql
+* Entry notification created
+* Exit notification created
+* Dashboard updated
+
+---
+
+## Dashboard Analytics
+
+The dashboard provides:
+
+* Total employees
+* Attendance records
+* Late arrivals
+* Notifications
+* Companies
+* Historical attendance trends
+
+---
+
+## Absence Monitoring
+
+At the end of the day the system:
+
+1. Detects employees without attendance.
+2. Generates absence reports.
+3. Sends email notifications.
+
+Powered by:
+
+* PHPMailer
+* SMTP
+
+---
+
+# Tech Stack
+
+| Category           | Technology  |
+| ------------------ | ----------- |
+| Backend            | PHP 8       |
+| Database           | MySQL 8     |
+| Frontend           | HTML5       |
+| Styling            | Bootstrap   |
+| JavaScript         | Vanilla JS  |
+| Charts             | Chart.js    |
+| QR Scanner         | Html5Qrcode |
+| Authentication     | JWT         |
+| Email              | PHPMailer   |
+| Dependency Manager | Composer    |
+
+---
+
+# DevOps Stack
+
+| Area             | Tool           |
+| ---------------- | -------------- |
+| Source Control   | Git            |
+| Repository       | GitHub         |
+| CI/CD            | GitHub Actions |
+| Containerization | Docker         |
+| Orchestration    | Kubernetes     |
+| Unit Testing     | PHPUnit        |
+| Coverage         | Xdebug         |
+
+---
+
+# Monitoring Stack
+
+| Area       | Technology       |
+| ---------- | ---------------- |
+| Metrics    | Prometheus       |
+| Dashboards | Grafana          |
+| Endpoint   | /api/metrics.php |
+
+Collected Metrics:
+
+* employees_total
+* attendance_total
+* late_arrivals_total
+* companies_total
+* notifications_total
+* qr_attendance_system_up
+
+---
+
+# Project Structure
+
+```text
+src/
+│
+├── Controllers/
+├── Services/
+├── Repositories/
+├── Models/
+├── Helpers/
+│
+tests/
+│
+├── Controllers/
+├── Services/
+├── Repositories/
+├── Helpers/
+│
+docker/
+│
+k8s/
+│
+monitoring/
+│
+config/
+│
+api/
 ```
 
-into MySQL.
+---
+
+# Database
+
+Main entities:
+
+## Employees
+
+Stores employee information.
+
+## Attendance
+
+Stores attendance records.
+
+## Companies
+
+Stores company information.
+
+## Notifications
+
+Stores generated notifications.
 
 ---
 
-### 3. Configure database connection
+# Testing Strategy
 
-Edit the file:
+The project implements automated testing using PHPUnit.
+
+Covered layers:
+
+* Repository Layer
+* Service Layer
+* Controller Layer
+* Helper Layer
+
+Current implementation includes:
+
+* Unit Tests
+* Business Logic Validation
+* Repository Testing
+* Controller Validation
+
+---
+
+# Code Coverage
+
+Coverage generated through Xdebug.
 
 ```bash
-config/database.php
+XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage
 ```
 
-with your MySQL server credentials.
+Coverage reports are generated inside:
 
----
-
-### 4. Run local server
-
-You can use:
-
-- XAMPP
-- Laragon
-- Apache
-
-Access the system from:
-
-```bash
-http://localhost/qr-attendance-system
+```text
+coverage/
 ```
 
 ---
 
-##  Testing
+# Continuous Integration
 
-The system can be tested through:
+GitHub Actions automatically executes:
 
-- Web browser
-- QR scanning with camera
-- HTTP testing tools like Postman
+```text
+Composer Validation
+↓
+Dependency Installation
+↓
+PHPUnit Execution
+↓
+Build Validation
+```
 
----
+Triggered on:
 
-##  Demonstrated Skills
-
-This project demonstrates skills in:
-
-- Backend development with PHP
-- Relational database design
-- Client-server architecture
-- Implementation of analytical dashboards
-- QR scanning integration
-- Real-time event handling
-- Security and authentication
-
+* Push
+* Pull Request
 
 ---
 
-##  Autor
+# Docker Deployment
+
+Build containers:
 
 ```bash
+docker compose up --build
+```
+
+Application:
+
+```bash
+http://localhost:8080
+```
+
+---
+
+# Kubernetes Deployment
+
+Resources:
+
+```text
+k8s/
+
+deployment.yaml
+service.yaml
+mysql-deployment.yaml
+mysql-service.yaml
+```
+
+Deploy:
+
+```bash
+kubectl apply -f k8s/
+```
+
+Verify:
+
+```bash
+kubectl get pods
+kubectl get services
+```
+
+---
+
+# Monitoring & Observability
+
+Prometheus scrapes metrics from:
+
+```text
+/api/metrics.php
+```
+
+Grafana visualizes:
+
+* Employees
+* Attendance
+* Late arrivals
+* Notifications
+* Companies
+
+---
+
+# Agile Project Management
+
+The project was managed using:
+
+* GitHub Issues
+* GitHub Projects
+* Kanban Board
+* Gherkin User Stories
+
+Workflow:
+
+```text
+To Do
+↓
+In Progress
+↓
+Review
+↓
+Done
+```
+
+Documented Features:
+
+* Attendance Management
+* Notifications
+* Dashboard Analytics
+* Absence Detection
+* Testing
+* CI/CD
+* Docker
+* Kubernetes
+* Monitoring
+
+---
+
+# Composer Packages
+
+The project uses the following Composer packages:
+
+| Package | Purpose |
+|----------|----------|
+| firebase/php-jwt | Authentication and JWT token management |
+| phpmailer/phpmailer | Email notifications and absence reports |
+| phpoffice/phpspreadsheet | Excel report generation and exports |
+| phpunit/phpunit | Automated testing |
+
+# Installation
+
+Clone repository:
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Import database:
+
+```bash
+mysql -u root -p control_asistencias_qr < control_asistencias_qr.sql
+```
+
+Start application:
+
+```bash
+docker compose up --build
+```
+
+---
+
+# Author
+
 Juan Carlos Reynoso Zúñiga
-```
+
+Computer Systems Engineer
+
+
+
+<img width="959" height="470" alt="TableroKanban" src="https://github.com/user-attachments/assets/2c85fbba-a73f-4439-ad3b-dcd9602f52ad" />
+
+
+<img width="959" height="474" alt="TableroKanban2" src="https://github.com/user-attachments/assets/9d1fca69-41a6-43ae-a824-c89b3e93521f" />
+
+
+<img width="959" height="476" alt="Prometheus" src="https://github.com/user-attachments/assets/9202eac8-f6f4-4c17-aa16-12b97b910fd4" />
+
+<img width="959" height="473" alt="Grafana" src="https://github.com/user-attachments/assets/26fecb1c-59fc-4ac2-8617-bfd69dfd88bf" />
+
+<img width="959" height="471" alt="Login" src="https://github.com/user-attachments/assets/30cb4c03-657a-4c71-b329-7e68946d241d" />
+
+<img width="959" height="465" alt="DashBoardPuntuales" src="https://github.com/user-attachments/assets/3d9b74bf-fd68-429f-b8a1-bfd35cb22e9f" />
+
+<img width="959" height="476" alt="image" src="https://github.com/user-attachments/assets/f128b51a-2792-44e4-8456-d4330c89c7da" />
+
+
+<img width="860" height="458" alt="image" src="https://github.com/user-attachments/assets/3b65dd5c-41f6-44cd-8612-a4726e8690c0" />
+
+
+
+<img width="860" height="455" alt="image" src="https://github.com/user-attachments/assets/3e1882dc-78a7-49e7-95f1-b2821dc6ea74" />
 
 
 <img width="1915" height="948" alt="image" src="https://github.com/user-attachments/assets/5e481423-1ec9-4fd9-8e85-c3faf0ee4095" />
@@ -347,8 +530,6 @@ Juan Carlos Reynoso Zúñiga
 
 <img width="1917" height="936" alt="image" src="https://github.com/user-attachments/assets/67e267ba-a27c-4593-a31a-ffb33144debb" />
 <img width="1908" height="945" alt="image" src="https://github.com/user-attachments/assets/5cfa7e82-5984-46b8-bddf-c91af2913e8d" />
-
-<img width="1912" height="945" alt="image" src="https://github.com/user-attachments/assets/da840105-fefe-492e-b91e-433f5db170a5" />
 
 <img width="1913" height="952" alt="image" src="https://github.com/user-attachments/assets/3e341e94-af68-4074-8924-b26f14c282f8" />
 

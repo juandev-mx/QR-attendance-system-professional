@@ -1,41 +1,51 @@
 <?php
-
-require "config/database.php";
-require "vendor/autoload.php";
+require_once __DIR__ . "/config/database.php";
+require_once __DIR__ . "/vendor/autoload.php";
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-$sql="SELECT e.nombre,a.fecha,a.hora_entrada,a.hora_salida
-FROM asistencias a
-JOIN empleados e ON e.id=a.empleado_id";
+try {
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$data=$conexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT e.nombre, a.fecha, a.hora_entrada, a.hora_salida
+            FROM asistencias a
+            JOIN empleados e ON e.id = a.empleado_id";
 
-$excel=new Spreadsheet();
-$sheet=$excel->getActiveSheet();
+    $data = $conexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-$sheet->setCellValue('A1','Empleado');
-$sheet->setCellValue('B1','Fecha');
-$sheet->setCellValue('C1','Entrada');
-$sheet->setCellValue('D1','Salida');
+    $excel = new Spreadsheet();
+    $sheet = $excel->getActiveSheet();
 
-$row=2;
+    // Encabezados
+    $sheet->setCellValue('A1', 'Empleado');
+    $sheet->setCellValue('B1', 'Fecha');
+    $sheet->setCellValue('C1', 'Entrada');
+    $sheet->setCellValue('D1', 'Salida');
 
-foreach($data as $d){
+    $row = 2;
+    foreach ($data as $d) {
+        $sheet->setCellValue("A$row", $d['nombre']);
+        $sheet->setCellValue("B$row", $d['fecha']);
+        $sheet->setCellValue("C$row", $d['hora_entrada']);
+        $sheet->setCellValue("D$row", $d['hora_salida']);
+        $row++;
+    }
 
-$sheet->setCellValue("A$row",$d['nombre']);
-$sheet->setCellValue("B$row",$d['fecha']);
-$sheet->setCellValue("C$row",$d['hora_entrada']);
-$sheet->setCellValue("D$row",$d['hora_salida']);
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment; filename="reporte_asistencias_' . date('Y-m-d') . '.xlsx"');
+    header('Cache-Control: max-age=0');
+    header('Cache-Control: max-age=1'); // Necesario para IE sobre SSL
+    header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Fecha en el pasado
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+    header('Cache-Control: cache, must-revalidate'); 
+    header('Pragma: public'); 
 
-$row++;
+    $writer = new Xlsx($excel);
+    $writer->save('php://output');
+    exit();
 
+} catch (Exception $e) {
+    http_response_code(500);
+    die("Error al generar el reporte: " . $e->getMessage());
 }
-
-$writer=new Xlsx($excel);
-
-header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="asistencias.xlsx"');
-
-$writer->save('php://output');

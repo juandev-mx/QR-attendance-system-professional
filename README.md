@@ -502,6 +502,9 @@ Juan Carlos Reynoso Zúñiga
 
 <img width="959" height="474" alt="TableroKanban2" src="https://github.com/user-attachments/assets/9d1fca69-41a6-43ae-a824-c89b3e93521f" />
 
+<img width="959" height="472" alt="image" src="https://github.com/user-attachments/assets/de4d0794-d6e2-436e-adbd-f2e2c0e7f6b8" />
+
+
 
 <img width="959" height="476" alt="Prometheus" src="https://github.com/user-attachments/assets/9202eac8-f6f4-4c17-aa16-12b97b910fd4" />
 

@@ -492,6 +492,11 @@ Installed packages include:
 
 Juan Carlos Reynoso Zúñiga
 
+---
+
+<img width="959" height="474" alt="image" src="https://github.com/user-attachments/assets/1598a883-386a-45a0-8e71-82b177c830cb" />
+
+
 <img width="959" height="470" alt="TableroKanban" src="https://github.com/user-attachments/assets/2c85fbba-a73f-4439-ad3b-dcd9602f52ad" />
 
 

@@ -505,6 +505,27 @@ Juan Carlos Reynoso Zúñiga
 
 <img width="959" height="476" alt="Prometheus" src="https://github.com/user-attachments/assets/9202eac8-f6f4-4c17-aa16-12b97b910fd4" />
 
+
+
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/4c8c29f7-9d6e-4b5b-8c74-3def424a24a8" />
+
+
+<img width="959" height="472" alt="image" src="https://github.com/user-attachments/assets/5b83e580-40dc-4427-8749-85edcd718dea" />
+
+<img width="957" height="471" alt="image" src="https://github.com/user-attachments/assets/35455091-4ba9-4d87-8bd9-f6628165477a" />
+
+<img width="959" height="473" alt="image" src="https://github.com/user-attachments/assets/98fd4608-f424-4f21-b33d-cb8bab1f72c7" />
+
+
+<img width="959" height="472" alt="image" src="https://github.com/user-attachments/assets/ddd5472e-7c9d-46ce-bd45-ec41fdd38253" />
+
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/fdd67c28-e5b4-48d6-914d-45ec3cba7c05" />
+
+
+<img width="959" height="474" alt="image" src="https://github.com/user-attachments/assets/431a895a-0cd2-4158-aaa3-03c73134d522" />
+
+
+
 <img width="959" height="473" alt="Grafana" src="https://github.com/user-attachments/assets/26fecb1c-59fc-4ac2-8617-bfd69dfd88bf" />
 
 <img width="959" height="471" alt="Login" src="https://github.com/user-attachments/assets/30cb4c03-657a-4c71-b329-7e68946d241d" />
@@ -519,6 +540,7 @@ Juan Carlos Reynoso Zúñiga
 
 
 <img width="860" height="455" alt="image" src="https://github.com/user-attachments/assets/3e1882dc-78a7-49e7-95f1-b2821dc6ea74" />
+
 
 
 <img width="1915" height="948" alt="image" src="https://github.com/user-attachments/assets/5e481423-1ec9-4fd9-8e85-c3faf0ee4095" />

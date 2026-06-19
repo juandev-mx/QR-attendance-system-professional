@@ -2,159 +2,208 @@
 
 ## Architectural Style
 
-The project follows a layered architecture combined with DevOps, Observability and Cloud-Native practices.
+The project follows a layered architecture combined with DevOps, Cloud-Native, Monitoring, Observability, and Alerting practices.
 
 ---
 
-## High-Level Architecture
+# High-Level Architecture
 
 ```text
-                    User
-                     │
-                     ▼
+                        Users
+                          │
+                          ▼
 
-             QR Attendance UI
-                     │
-                     ▼
+                  QR Attendance UI
+                          │
+                          ▼
 
-               Controllers
-                     │
-                     ▼
+                    Controllers
+                          │
+                          ▼
 
-                 Services
-                     │
-                     ▼
+                      Services
+                          │
+                          ▼
 
-              Repositories
-                     │
-                     ▼
+                   Repositories
+                          │
+                          ▼
 
-                  MySQL
+                       MySQL
 
--------------------------------------------------
+=================================================
 
-          Monitoring & Observability
+              Monitoring & Observability
 
-Prometheus
-     │
-     ▼
+                  Prometheus
+                        ▲
+                        │
+                Scrapes Metrics
+                        │
+                        ▼
 
-/api/metrics.php
-     │
-     ▼
+                 /api/metrics.php
+                        │
+                        ▼
 
-Application Metrics
+               Application Metrics
 
-Grafana
-     │
-     ▼
+                ├── employees_total
+                ├── attendance_total
+                ├── late_arrivals_total
+                ├── companies_total
+                ├── notifications_total
+                └── qr_attendance_system_up
 
-Business Dashboards
+                        │
+                        ▼
 
--------------------------------------------------
+                Prometheus Rules
 
-CI/CD Pipeline
+                        │
+                        ▼
 
-Developer
-     │
- git push
-     │
-     ▼
+                  Alertmanager
 
-GitHub Actions
-     │
-     ├── Composer Validation
-     ├── Dependency Installation
-     ├── PHPUnit Execution
-     └── Build Validation
+                        │
+                        ▼
 
--------------------------------------------------
+                Email Notifications
+                     (SMTP)
 
-Deployment
+                        │
+                        ▼
 
-Docker
-     │
-     ▼
+                     Grafana
 
-Docker Compose
-     │
-     ▼
+                        │
+                        ▼
 
-Kubernetes
+              Business Dashboards
+
+=================================================
+
+                  CI/CD Pipeline
+
+                    Developer
+                         │
+                    git push
+                         │
+                         ▼
+
+                 GitHub Actions
+
+                         │
+
+         ┌───────────────┼───────────────┐
+         │               │               │
+
+         ▼               ▼               ▼
+
+  Composer Install   PHPUnit Tests   Build Validation
+
+=================================================
+
+                     Deployment
+
+                      Docker
+                         │
+                         ▼
+
+                  Docker Compose
+                         │
+                         ▼
+
+                    Kubernetes
 ```
 
 ---
 
-## Application Layers
+# Application Layers
 
-### Presentation Layer
+## Presentation Layer
 
-Responsible for handling user requests and responses.
+Responsible for handling user interactions and rendering views.
 
-Components:
+### Components
 
 * Dashboard
 * QR Scanner Interface
 * Authentication Views
+* Reports Module
 
 ---
 
-### Controller Layer
+## Controller Layer
 
-Responsible for processing HTTP requests.
+Responsible for processing HTTP requests and orchestrating application flows.
 
-Components:
+### Components
 
 * AttendanceController
 * EmployeeController
 * CompanyController
 * MetricsController
 
+### Responsibilities
+
+* Request validation
+* Response handling
+* Route coordination
+
 ---
 
-### Service Layer
+## Service Layer
 
-Contains business rules and application logic.
+Contains business rules and application workflows.
 
-Components:
+### Components
 
 * AttendanceService
 * EmployeeService
 * CompanyService
+* NotificationService
 
-Responsibilities:
+### Responsibilities
 
-* Attendance validation
-* Lateness calculation
+* Attendance registration
+* Duplicate attendance prevention
+* Lateness detection
 * Notification generation
-* Business workflows
+* Absence processing
 
 ---
 
-### Repository Layer
+## Repository Layer
 
-Responsible for database access.
+Responsible for data persistence and retrieval.
 
-Components:
+### Components
 
 * AttendanceRepository
 * EmployeeRepository
 * CompanyRepository
 * NotificationRepository
 
-Pattern:
+### Pattern Used
 
 * Repository Pattern
 
+### Responsibilities
+
+* Database abstraction
+* Query management
+* Data access encapsulation
+
 ---
 
-### Persistence Layer
+## Persistence Layer
 
-Database engine:
+### Database Engine
 
 * MySQL 8
 
-Main entities:
+### Main Entities
 
 * Employees
 * Attendance
@@ -165,82 +214,111 @@ Main entities:
 
 ---
 
-## Design Patterns
+# Design Patterns
 
-Implemented patterns:
+## Implemented Patterns
 
 * Repository Pattern
 * Service Layer Pattern
 * Dependency Injection
 * Separation of Concerns
 
+## Benefits
+
+* Maintainability
+* Testability
+* Scalability
+* Loose Coupling
+
 ---
 
-## DevOps Architecture
+# DevOps Architecture
 
-### Continuous Integration
+## Continuous Integration
 
-GitHub Actions pipeline executes:
+GitHub Actions executes automatically:
 
 * Composer validation
 * Dependency installation
-* PHPUnit test suite
-* Build verification
+* PHPUnit execution
+* Build validation
+
+### Triggers
+
+* Push
+* Pull Requests
 
 ---
 
-### Containerization
+## Containerization
 
-Docker components:
+### Containers
 
-* PHP 8
-* Apache
+* PHP 8 + Apache
 * MySQL
+* Prometheus
+* Grafana
+* Alertmanager
 
-Orchestrated using:
+### Managed Through
 
 * Docker Compose
 
 ---
 
-### Kubernetes
+## Kubernetes
 
-Resources:
+### Resources
 
 * Deployment
 * Service
 * MySQL Deployment
 * MySQL Service
 
+### Capabilities
+
+* Application orchestration
+* Service exposure
+* Scalable deployments
+
 ---
 
-## Testing Architecture
+# Testing Architecture
 
-Testing framework:
+## Framework
 
 * PHPUnit
 
-Tested layers:
+## Covered Layers
 
 * Repositories
 * Services
 * Controllers
+* Helpers
 
-Coverage engine:
+## Coverage Tool
 
 * Xdebug
 
+## Coverage Reports
+
+```text
+coverage/
+```
+
 ---
 
-## Monitoring Architecture
+# Monitoring & Observability
 
-Metrics endpoint:
+## Metrics Endpoint
 
 ```text
 /api/metrics.php
 ```
 
-Collected metrics:
+## Business Metrics
+
+Collected by Prometheus:
 
 * employees_total
 * attendance_total
@@ -249,36 +327,245 @@ Collected metrics:
 * notifications_total
 * qr_attendance_system_up
 
-Monitoring stack:
+---
+
+## Monitoring Stack
 
 * Prometheus
 * Grafana
 
+### Responsibilities
+
+* Metrics collection
+* Time-series storage
+* Dashboard visualization
+
 ---
 
-## Security Components
+# Alerting Architecture
 
-Authentication:
+The platform includes proactive monitoring through Prometheus Alert Rules and Alertmanager.
+
+## Prometheus Rules
+
+### QRAttendanceSystemDown
+
+Triggered when:
+
+```promql
+qr_attendance_system_up == 0
+```
+
+#### Purpose
+
+Detect application outages.
+
+---
+
+### HighLateArrivals
+
+Triggered when:
+
+```promql
+late_arrivals_total > 10
+```
+
+#### Purpose
+
+Detect abnormal punctuality trends.
+
+---
+
+### NoAttendanceRecords
+
+Triggered when:
+
+```promql
+attendance_total == 0
+```
+
+for 5 minutes.
+
+#### Purpose
+
+Detect attendance registration failures.
+
+---
+
+## Alertmanager
+
+### Responsibilities
+
+* Alert aggregation
+* Alert routing
+* Alert delivery
+
+### Integrated With
+
+* Gmail SMTP
+
+### Capabilities
+
+* Email notifications
+* Alert grouping
+* Alert lifecycle management
+* Automatic incident reporting
+
+---
+
+## Alert Flow
+
+```text
+Application
+      │
+      ▼
+
+Prometheus Metrics
+      │
+      ▼
+
+Prometheus Rules
+      │
+      ▼
+
+Alertmanager
+      │
+      ▼
+
+Email Notification
+```
+
+---
+
+# Security Components
+
+## Authentication
 
 * JWT (firebase/php-jwt)
 
-Authorization:
+## Authorization
 
 * Protected routes
 * Session validation
 
+## Security Goals
+
+* Authentication
+* Access control
+* Secure API communication
+
 ---
 
-## Reporting Components
+# Reporting Components
 
-Email:
+## Email Reports
+
+### Technology
 
 * PHPMailer
 
-Excel Reports:
+### Features
+
+* Absence reports
+* Automated notifications
+
+---
+
+## Excel Reports
+
+### Technology
 
 * PhpSpreadsheet
 
-PDF Reports:
+### Features
 
-* PDF Export Module
+* Attendance exports
+* Business reports
+
+---
+
+## PDF Reports
+
+### Features
+
+* Attendance summaries
+* Administrative reporting
+
+---
+
+# Composer Packages
+
+| Package                  | Purpose                                 |
+| ------------------------ | --------------------------------------- |
+| firebase/php-jwt         | Authentication and JWT token management |
+| phpmailer/phpmailer      | Email notifications and reports         |
+| phpoffice/phpspreadsheet | Excel report generation                 |
+| phpunit/phpunit          | Automated testing                       |
+
+---
+
+# Architectural Highlights
+
+This project demonstrates practical implementation of:
+
+* Layered Architecture
+* Repository Pattern
+* Dependency Injection
+* Automated Testing
+* CI/CD Pipelines
+* Containerization
+* Kubernetes Deployments
+* Monitoring & Observability
+* Prometheus Alert Rules
+* Alertmanager Email Notifications
+* SMTP Integration
+* Agile Project Management
+* Technical Documentation
+
+---
+
+# Observability Stack
+
+The project implements a complete observability workflow:
+
+```text
+Monitoring
+     │
+     ▼
+
+Prometheus
+
+     │
+     ▼
+
+Visualization
+
+Grafana
+
+     │
+     ▼
+
+Alerting
+
+Prometheus Rules
+
+     │
+     ▼
+
+Alertmanager
+
+     │
+     ▼
+
+SMTP Email Notifications
+```
+
+### Implemented Components
+
+* Monitoring (Prometheus)
+* Visualization (Grafana)
+* Alerting (Prometheus Rules + Alertmanager)
+* Notification Delivery (SMTP Email)
+
+This architecture follows practices commonly used in DevOps, Cloud Engineering, Platform Engineering, and Site Reliability Engineering (SRE) environments.
+"""

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit
-    bootstrap="vendor/autoload.php"
-    colors="true"
->
+<phpunit xmlns:xsi="http://w3.org"
+         xsi:noNamespaceSchemaLocation="https://phpunit.de"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+    
     <testsuites>
         <testsuite name="Repositories">
             <directory>tests/Repositories</directory>
@@ -24,7 +25,6 @@
             <directory>tests/Models</directory>
         </testsuite>
     </testsuites>
-</testsuites>
 
     <coverage processUncoveredFiles="true">
         <include>
@@ -32,10 +32,11 @@
         </include>
     </coverage>
 
-   <php>
+    <php>
         <env name="DB_HOST" value="localhost"/>
         <env name="DB_NAME" value="control_asistencias_qr"/>
         <env name="DB_USER" value="root"/>
         <env name="DB_PASSWORD" value="juan123"/>
     </php>
 </phpunit>
+

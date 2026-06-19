@@ -566,6 +566,3 @@ SMTP Email Notifications
 * Visualization (Grafana)
 * Alerting (Prometheus Rules + Alertmanager)
 * Notification Delivery (SMTP Email)
-
-This architecture follows practices commonly used in DevOps, Cloud Engineering, Platform Engineering, and Site Reliability Engineering (SRE) environments.
-"""

@@ -744,7 +744,11 @@ Juan Carlos Reynoso Zúñiga
 <img width="959" height="474" alt="AlertManagerEmailResolved" src="https://github.com/user-attachments/assets/1feb48c0-4f26-4500-8284-55afa3ba8131" />
 
 
-<img width="959" height="473" alt="Grafana" src="https://github.com/user-attachments/assets/26fecb1c-59fc-4ac2-8617-bfd69dfd88bf" />
+<img width="959" height="474" alt="image" src="https://github.com/user-attachments/assets/abe767ee-4815-4542-85af-a9e8b8d73717" />
+
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/a2a9e443-90dc-4f6e-bf4d-ac25a935591d" />
+
+<img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/72109fcf-5f65-4781-a189-c5af3552e450" />
 
 <img width="959" height="471" alt="Login" src="https://github.com/user-attachments/assets/30cb4c03-657a-4c71-b329-7e68946d241d" />
 

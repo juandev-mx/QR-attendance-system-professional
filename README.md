@@ -456,7 +456,13 @@ config/
 │
 api/
 ```
+## Documentation
 
+Additional technical documentation is available in the `docs/` directory.
+
+| Document | Description |
+|-----------|------------|
+| architecture.md | System architecture, design patterns, monitoring, alerting and deployment overview |
 ---
 
 # Database

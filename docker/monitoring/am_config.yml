@@ -1,9 +1,9 @@
 global:
   resolve_timeout: 5m
   smtp_smarthost: 'smtp.gmail.com:587'
-  smtp_from: 'minimundochez760@gmail.com'
-  smtp_auth_username: 'minimundochez760@gmail.com'
-  smtp_auth_password: 'gtnxxrkbwtlukqup' 
+  smtp_from: 'adminempresa@gmail.com'
+  smtp_auth_username: 'adminempresa@gmail.com'
+  smtp_auth_password: 'contraseña123' 
 
 route:
   group_by: ['alertname']
@@ -15,7 +15,7 @@ route:
 receivers:
 - name: 'gmail-alerts'
   email_configs:
-  - to: 'minimundochez760@gmail.com'
+  - to: 'adminempresa@gmail.com'
     send_resolved: true
     headers:
       subject: '{{ .Status | toUpper }} - {{ .CommonLabels.alertname }}'

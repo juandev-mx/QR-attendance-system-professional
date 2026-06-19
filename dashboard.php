@@ -47,7 +47,6 @@ try {
 <div class="container mt-4">
     <h2 class="mb-4">📊 Panel Analítico de Asistencia</h2>
 
-    <!-- FILA 1: TARJETAS DE MÉTRICAS -->
     <div class="row text-center mb-4">
         <div class="col-md-3 mb-3">
             <div class="card bg-primary text-white"><div class="card-body"><h6>Total Empleados</h6><h2><?php echo $total_empleados; ?></h2></div></div>

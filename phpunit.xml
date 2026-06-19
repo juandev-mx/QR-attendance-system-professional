@@ -4,36 +4,26 @@
     colors="true"
 >
     <testsuites>
+        <testsuite name="Repositories">
+            <directory>tests/Repositories</directory>
+        </testsuite>
 
-    <testsuite name="Repositories">
-        <directory>
-            tests/Repositories
-        </directory>
-    </testsuite>
+        <testsuite name="Services">
+            <directory>tests/Services</directory>
+        </testsuite>
 
-    <testsuite name="Services">
-        <directory>
-            tests/Services
-        </directory>
-    </testsuite>
+        <testsuite name="Controllers">
+            <directory>tests/Controllers</directory>
+        </testsuite>
 
-    <testsuite name="Controllers">
-        <directory>
-            tests/Controllers
-        </directory>
-    </testsuite>
-
-    <testsuite name="Helpers">
-        <directory>
-            tests/Helpers
-        </directory>
+        <testsuite name="Helpers">
+            <directory>tests/Helpers</directory>
+        </testsuite>
         
-          <testsuite name="Models">
-        <directory>
-            tests/Models
-        </directory>
-    </testsuite>
-
+        <testsuite name="Models">
+            <directory>tests/Models</directory>
+        </testsuite>
+    </testsuites>
 </testsuites>
 
     <coverage processUncoveredFiles="true">

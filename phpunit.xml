@@ -27,6 +27,11 @@
         <directory>
             tests/Helpers
         </directory>
+        
+          <testsuite name="Models">
+        <directory>
+            tests/Models
+        </directory>
     </testsuite>
 
 </testsuites>

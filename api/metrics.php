@@ -4,33 +4,25 @@ header("Content-Type: text/plain; charset=utf-8");
 ob_start();
 require_once __DIR__ . '/../config/database.php';
 ob_end_clean();
+// Detectar de forma inteligente si la petición viene dentro de Docker o desde fuera (Windows)
+$es_contenedor = file_exists('/.dockerenv') || (gethostname() === 'qr-attendance-app') || (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Prometheus') !== false);
+
+// Si es Docker usa el alias 'mysql' y puerto 3306. Si es Windows usa '127.0.0.1' y puerto 3307
+$host_env = $es_contenedor ? 'mysql' : '127.0.0.1'; 
+$port_env = $es_contenedor ? '3306'  : '3307';  
+$db_name  = 'control_asistencias_qr';
+$db_user  = 'root';
+$db_pass  = 'root';  
 
 try {
-    $es_contenedor = (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'app') || file_exists('/.dockerenv');
-    
-
-    $host_env = $es_contenedor ? 'host.docker.internal' : '127.0.0.1';
-    
-    $port_env = '3306'; 
-    $db_name  = 'control_asistencias_qr';
-    $db_user  = 'root';
-    $db_pass  = 'juan123'; 
-
     $conexion = new PDO("mysql:host=$host_env;port=$port_env;dbname=$db_name;charset=utf8", $db_user, $db_pass);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    try {
-        $host_alt = $es_contenedor ? '172.18.0.1' : '127.0.0.1';
-        $conexion = new PDO("mysql:host=$host_alt;port=3306;dbname=control_asistencias_qr;charset=utf8", 'root', 'juan123');
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e2) {
-        http_response_code(500);
-        echo "qr_attendance_system_up 0\n";
-        echo "# ERROR DE CONEXIÓN ABSOLUTO: " . $e2->getMessage() . "\n";
-        exit;
-    }
+    http_response_code(500);
+    echo "qr_attendance_system_up 0\n";
+    echo "# ERROR DE CONEXION EN RED DOCKER: " . $e->getMessage() . "\n";
+    exit;
 }
-
 
 try {
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

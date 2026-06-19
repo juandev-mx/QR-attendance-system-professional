@@ -17,5 +17,10 @@
     "require-dev": {
         "rector/rector": "*",
         "phpunit/phpunit": "^9.6"
+    },
+    "require": {
+        "phpoffice/phpspreadsheet": "^2.1",
+        "firebase/php-jwt": "^7.1",
+        "phpmailer/phpmailer": "^7.1"
     }
 }

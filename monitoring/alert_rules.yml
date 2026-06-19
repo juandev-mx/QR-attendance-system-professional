@@ -1,0 +1,54 @@
+groups:
+
+- name: qr_attendance_alerts
+
+  rules:
+
+  - alert: QRAttendanceSystemDown
+
+    expr: qr_attendance_system_up == 0
+
+    for: 1m
+
+    labels:
+      severity: critical
+
+    annotations:
+
+      summary: "QR Attendance System is down"
+
+      description: "The application metrics endpoint is not responding."
+
+
+
+  - alert: HighLateArrivals
+
+    expr: late_arrivals_total > 10
+
+    for: 1m
+
+    labels:
+      severity: warning
+
+    annotations:
+
+      summary: "High number of late arrivals"
+
+      description: "More than 10 employees arrived late."
+
+
+
+  - alert: NoAttendanceRecords
+
+    expr: attendance_total == 0
+
+    for: 5m
+
+    labels:
+      severity: warning
+
+    annotations:
+
+      summary: "No attendance records detected"
+
+      description: "No attendance registrations have been recorded."

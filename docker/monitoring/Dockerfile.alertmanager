@@ -1,0 +1,2 @@
+FROM prom/alertmanager:latest
+COPY monitoring/am_config.yml /etc/alertmanager/alertmanager.yml

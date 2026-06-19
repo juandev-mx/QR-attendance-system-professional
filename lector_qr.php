@@ -73,11 +73,10 @@ function onScanSuccess(decodedText) {
 }
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", 
-    { 
-        fps: 3, 
-        qrbox: {width: 250, height: 250},
-        rememberLastUsedCamera: true 
+    "reader",
+    {
+        fps: 10,                 
+        qrbox: 250,              
     },
     false
 );

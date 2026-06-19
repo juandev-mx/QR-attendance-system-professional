@@ -1,15 +1,14 @@
 services:
   app:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
+    image: docker-app:latest
     container_name: qr-attendance-app
     ports:
       - "8080:80"
-    volumes:
-      - ../:/var/www/html
+  
     depends_on:
       - mysql
+    networks:
+      - qr-network
 
   mysql:
     image: mysql:8.0
@@ -22,6 +21,8 @@ services:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - qr-network
 
   prometheus:
     image: prom/prometheus:latest
@@ -30,9 +31,13 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitoring/alert_rules.yml:/etc/prometheus/alert_rules.yml
     depends_on:
       - app
+      - alertmanager
+    networks:
+      - qr-network
 
   grafana:
     image: grafana/grafana:latest
@@ -44,8 +49,25 @@ services:
       - grafana_data:/var/lib/grafana
     depends_on:
       - prometheus
+    networks:
+      - qr-network
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./monitoring/am_config.yml:/etc/alertmanager/alertmanager.yml
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+    networks:
+      - qr-network
 
 volumes:
   mysql_data:
   grafana_data:
 
+networks:
+  qr-network:
+    driver: bridge

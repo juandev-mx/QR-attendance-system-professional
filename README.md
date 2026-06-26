@@ -2,7 +2,8 @@
 
 ![Build Status](https://github.com/juandev-mx/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
 
-![Coverage](https://img.shields.io/badge/Coverage-92.27%25-brightgreen?style=for-the-badge)
+![Coverage](https://img.shields.io/badge/Coverage-95.27%25-brightgreen?style=for-the-badge)
+
 
 
 

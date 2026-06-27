@@ -1,7 +1,7 @@
 # QR Attendance System Professional
 
 ![Build Status](https://github.com/juandev-mx/QR-attendance-system-professional/actions/workflows/ci-build.yaml/badge.svg)
-
+s
 ![Coverage](https://img.shields.io/badge/Coverage-95.27%25-brightgreen?style=for-the-badge)
 
 

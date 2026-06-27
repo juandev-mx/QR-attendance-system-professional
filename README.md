@@ -1,7 +1,8 @@
 # QR Attendance System Professional
 
-![Build Status](https://github.com/juandev-mx/QR-attendance-system-professional/actions/workflows/ci-build.yaml/badge.svg)
-s
+[![PHPUnit](https://github.com/juandev-mx/QR-attendance-system-professional/actions/workflows/phpunit.yml/badge.svg?branch=main)](https://github.com/juandev-mx/QR-attendance-system-professional/actions/workflows/phpunit.yml)
+
+
 ![Coverage](https://img.shields.io/badge/Coverage-95.27%25-brightgreen?style=for-the-badge)
 
 

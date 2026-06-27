@@ -118,6 +118,7 @@ The monitoring stack allows the system to:
 * Detect incidents automatically
 * Send email notifications when thresholds are exceeded
 
+
 ### Controller Layer
 
 Handles HTTP requests and responses.
@@ -149,6 +150,42 @@ Examples:
 * EmployeeRepository
 * CompanyRepository
 * NotificationRepository
+
+## Grafana Dashboard
+
+The project includes a pre-built Grafana dashboard that can be imported directly into any Grafana instance.
+
+**File:** [`grafana-dashboard-qr.json`](https://github.com/juandev-mx/QR-attendance-system-professional/blob/main/grafana-dashboard-qr.json)
+
+### Dashboard Overview
+
+| Property | Value |
+|----------|-------|
+| Title | `dashboard_qr` |
+| Panel type | Time series |
+| Time range | Last 6 hours |
+| Data source | Prometheus |
+
+The dashboard includes a time series panel that visualizes all business metrics collected by Prometheus in a single view:
+
+| Query | Metric |
+|-------|--------|
+| A | `employees_total` |
+| B | `attendance_total` |
+| C | `late_arrivals_total` |
+| D | `companies_total` |
+| E | `notifications_total` |
+| F | `qr_attendance_system_up` |
+
+### Import Instructions
+
+1. Open Grafana in your browser
+2. Go to **Dashboards → Import**
+3. Upload `grafana-dashboard-qr.json` or paste its contents
+4. Select your Prometheus data source
+5. Click **Import**
+
+The dashboard will be ready to visualize live data from the QR Attendance System.
 
 ---
 

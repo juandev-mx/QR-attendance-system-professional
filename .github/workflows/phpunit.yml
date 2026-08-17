@@ -1,4 +1,4 @@
-name: CI/CD - PHPUnit & Deploy to Codespaces
+name: CI - PHPUnit Tests & Build Image
 
 on:
   push:
@@ -88,13 +88,3 @@ jobs:
           tags: |
             ghcr.io/juandev-mx/qr-attendance-system-professional:latest
             ghcr.io/juandev-mx/qr-attendance-system-professional:${{ github.sha }}
-
-  deploy:
-    needs: test-and-build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Codespaces Server
-        uses: github/codespaces-action@v1
-        with:
-          github_token: ${{ secrets.CODESPACE_TOKEN }}
-          location: 'WestUs' 

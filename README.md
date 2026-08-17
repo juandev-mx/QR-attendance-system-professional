@@ -6,9 +6,6 @@
 ![Coverage](https://img.shields.io/badge/Coverage-95.27%25-brightgreen?style=for-the-badge)
 
 
-
-
-
 ## Enterprise QR-Based Attendance Management Platform
 
 ![PHP](https://img.shields.io/badge/PHP_8-777BB4?style=for-the-badge\&logo=php\&logoColor=white)
@@ -602,6 +599,178 @@ http://localhost:8080
 ```
 
 ---
+
+#  Cloud Deployment & CI/CD Architecture
+
+The QR Attendance System implements a hybrid cloud deployment workflow that validates CI/CD, containerization, cloud deployment, and Kubernetes orchestration using cost-efficient infrastructure.
+
+The implementation combines:
+
+* **GitHub Actions** for CI/CD automation.
+* **GitHub Container Registry (GHCR)** for Docker image distribution.
+* **Render** for live application hosting.
+* **Aiven** for the managed MySQL database.
+* **Minikube in GitHub Codespaces** for Kubernetes orchestration simulation.
+
+---
+
+##  CI/CD Pipeline Workflow
+
+The deployment pipeline automates testing, containerization, image publication, and cloud deployment.
+
+```text
+GitHub Repository
+        │
+        ▼
+GitHub Actions
+        │
+        ├── PHPUnit Tests
+        ├── Build Validation
+        └── Docker Build
+                │
+                ▼
+              GHCR
+                │
+                ▼
+             Render
+                │
+                ▼
+          Live Application
+                │
+                ▼
+           Aiven MySQL
+```
+
+### Pipeline Stages
+
+1. **Validation** — PHPUnit tests and build validation are executed.
+2. **Containerization** — A production Docker image is built.
+3. **Registry** — The image is published to GHCR using the `:latest` tag.
+4. **Deployment** — Render automatically deploys the updated application container.
+
+---
+
+##  Live Cloud Deployment
+
+The live cloud environment uses a decoupled application and database architecture:
+
+| Component           | Platform       |
+| ------------------- | -------------- |
+| CI/CD               | GitHub Actions |
+| Container Registry  | GHCR           |
+| Application Hosting | Render         |
+| Database            | Aiven MySQL    |
+| Containerization    | Docker         |
+
+The application connects to the managed MySQL database through environment variables:
+
+```text
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASSWORD
+```
+
+This configuration keeps infrastructure-specific database credentials outside the application source code.
+
+---
+
+##  Kubernetes Orchestration Simulation
+
+Kubernetes deployment patterns were validated using **Minikube inside GitHub Codespaces**, avoiding the cost of a managed Kubernetes cluster.
+
+The Kubernetes resources are located in:
+
+```text
+k8s/
+├── deployment.yaml
+├── service.yaml
+├── mysql-deployment.yaml
+└── mysql-service.yaml
+```
+
+The application deployment uses:
+
+```yaml
+imagePullPolicy: Always
+```
+
+Deployment and validation are performed with:
+
+```bash
+kubectl apply -f k8s/
+kubectl get pods
+kubectl get services
+```
+
+Application access can be validated through:
+
+```bash
+kubectl port-forward service/qr-attendance-service 8080:80
+```
+
+This environment validates application pods, Kubernetes services, container image retrieval, and deployment updates.
+
+---
+
+##  Deployment Validation
+
+The completed implementation validates:
+
+* Successful cloud application deployment through Render.
+* Connectivity with the managed Aiven MySQL database.
+* Automated Docker image publication to GHCR.
+* Automated deployment through GitHub Actions and Render.
+* Kubernetes deployment using Minikube.
+* Application pod and service availability.
+* Attendance functionality against the deployed database.
+* Metrics availability through `/api/metrics.php`.
+
+---
+
+##  Monitoring Integration
+
+The deployed application exposes Prometheus-compatible metrics through:
+
+```text
+/api/metrics.php
+```
+
+Key business metrics include:
+
+```text
+employees_total
+attendance_total
+late_arrivals_total
+companies_total
+notifications_total
+qr_attendance_system_up
+```
+
+These metrics integrate with the project's existing Prometheus and Grafana observability stack.
+
+---
+
+##  Issue #18 — Completed
+
+The cloud deployment and Kubernetes orchestration work defined in **Issue #18** was successfully completed.
+
+The implementation validated the application's deployment workflow across:
+
+```text
+CI/CD
+  ↓
+Docker
+  ↓
+GHCR
+  ↓
+Render + Aiven
+  ↓
+Kubernetes Simulation
+  ↓
+Monitoring
+```
+
 
 # Kubernetes Deployment
 

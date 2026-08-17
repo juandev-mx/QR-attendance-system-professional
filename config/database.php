@@ -1,11 +1,13 @@
 <?php
 $es_contenedor = (getenv('KUBERNETES_SERVICE_HOST') || file_exists('/.dockerenv') || gethostname() === 'qr-attendance-app');
 
-$host     = $es_contenedor ? "mysql" : "127.0.0.1";
-$dbname   = "control_asistencias_qr";
-$user     = "root";
-$password = $es_contenedor ? "root" : "root"; 
-$port     = $es_contenedor ? "3306" : "3307"; 
+// Prioriza las variables de Render/Aiven en la nube. Si no existen, usa las locales.
+$host     = getenv('DB_HOST')     ?: ($es_contenedor ? "mysql" : "127.0.0.1");
+$port     = getenv('DB_PORT')     ?: ($es_contenedor ? "3306"  : "3307");
+$user     = getenv('DB_USER')     ?: "root";
+$password = getenv('DB_PASSWORD') ?: "root";
+$dbname   = getenv('DB_NAME')     ?: "control_asistencias_qr";
+
 try {
     $conexion = new PDO(
         "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8",

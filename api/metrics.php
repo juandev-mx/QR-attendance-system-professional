@@ -6,11 +6,12 @@ require_once __DIR__ . '/../config/database.php';
 ob_end_clean();
 $es_contenedor = file_exists('/.dockerenv') || (gethostname() === 'qr-attendance-app') || (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Prometheus') !== false);
 
-$host_env = $es_contenedor ? 'mysql' : '127.0.0.1'; 
-$port_env = $es_contenedor ? '3306'  : '3307';  
-$db_name  = 'control_asistencias_qr';
-$db_user  = 'root';
-$db_pass  = 'root';  
+// Prioriza las variables de Render/Aiven en la nube. Si no existen, usa las locales.
+$host_env = getenv('DB_HOST')     ?: ($es_contenedor ? 'mysql' : '127.0.0.1'); 
+$port_env = getenv('DB_PORT')     ?: ($es_contenedor ? '3306'  : '3307');  
+$db_user  = getenv('DB_USER')     ?: 'root';
+$db_pass  = getenv('DB_PASSWORD') ?: 'root';  
+$db_name  = getenv('DB_NAME')     ?: 'control_asistencias_qr';
 
 try {
     $conexion = new PDO("mysql:host=$host_env;port=$port_env;dbname=$db_name;charset=utf8", $db_user, $db_pass);

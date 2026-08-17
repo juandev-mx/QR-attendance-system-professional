@@ -16,9 +16,12 @@
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge\&logo=github-actions\&logoColor=white)
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)
+![GitHub Container Registry](https://img.shields.io/badge/GHCR-Container_Registry-2088FF?style=for-the-badge\&logo=github\&logoColor=white)
+![Render](https://img.shields.io/badge/Render-Cloud_Deployment-46E3B7?style=for-the-badge\&logo=render\&logoColor=white)
+![Aiven](https://img.shields.io/badge/Aiven-Managed_MySQL-FF4F64?style=for-the-badge\&logo=aiven\&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge\&logo=kubernetes\&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge\&logo=prometheus\&logoColor=white)
-![Alertmanager](https://img.shields.io/badge/Alertmanager-FF4D4D?style=for-the-badge&logo=prometheus&logoColor=white)
+![Alertmanager](https://img.shields.io/badge/Alertmanager-FF4D4D?style=for-the-badge\&logo=prometheus\&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge\&logo=grafana\&logoColor=white)
 
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge\&logo=bootstrap\&logoColor=white)
@@ -32,8 +35,8 @@
 ![Agile](https://img.shields.io/badge/Agile-Scrum-blue?style=for-the-badge)
 ![Kanban](https://img.shields.io/badge/Kanban-Project_Management-green?style=for-the-badge)
 ![Gherkin](https://img.shields.io/badge/Gherkin-BDD-orange?style=for-the-badge)
-![Firebase JWT](https://img.shields.io/badge/Firebase_JWT-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
-![PhpSpreadsheet](https://img.shields.io/badge/PhpSpreadsheet-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
+![Firebase JWT](https://img.shields.io/badge/Firebase_JWT-FFCA28?style=for-the-badge\&logo=firebase\&logoColor=black)
+![PhpSpreadsheet](https://img.shields.io/badge/PhpSpreadsheet-217346?style=for-the-badge\&logo=microsoft-excel\&logoColor=white)
 
 A professional attendance management platform built using PHP, MySQL, Docker, Kubernetes, GitHub Actions, PHPUnit, Prometheus and Grafana.
 

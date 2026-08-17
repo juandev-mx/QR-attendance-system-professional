@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: qr-attendance-app
-          image: qr-attendance-system:latest
-          imagePullPolicy: Never
+          image: ghcr.io/juandev-mx/qr-attendance-system-professional:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
-

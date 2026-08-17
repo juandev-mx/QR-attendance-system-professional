@@ -86,5 +86,5 @@ jobs:
           file: docker/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/juandev-mx/qr-attendance-system-professional:latest
+            ghcr.io/juandev-mx/qr-attendance-system-professional:${{ github.sha }}

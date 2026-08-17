@@ -1,4 +1,4 @@
-name: PHPUnit Tests & Build Image
+name: CI/CD - PHPUnit & Deploy to Codespaces
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test:
+  test-and-build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -62,7 +62,7 @@ jobs:
             mysql -h 127.0.0.1 -u root -pjuan123 control_asistencias_qr < seed.sql
           fi
 
-      - name: Run PHPUnit
+      - name: Run PHPUnit Tests
         run: |
           chmod +x vendor/bin/phpunit
           vendor/bin/phpunit --configuration phpunit.xml
@@ -88,3 +88,13 @@ jobs:
           tags: |
             ghcr.io/juandev-mx/qr-attendance-system-professional:latest
             ghcr.io/juandev-mx/qr-attendance-system-professional:${{ github.sha }}
+
+  deploy:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Codespaces Server
+        uses: github/codespaces-action@v1
+        with:
+          github_token: ${{ secrets.CODESPACE_TOKEN }}
+          location: 'WestUs' 

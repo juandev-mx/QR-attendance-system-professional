@@ -910,6 +910,30 @@ Juan Carlos Reynoso Zúñiga
 
 <img width="959" height="474" alt="image" src="https://github.com/user-attachments/assets/1598a883-386a-45a0-8e71-82b177c830cb" />
 
+<img width="959" height="468" alt="1" src="https://github.com/user-attachments/assets/52d3033e-d9b2-420e-bbf3-7cf5d4101a41" />
+
+<img width="959" height="472" alt="2" src="https://github.com/user-attachments/assets/46020d7f-a161-4af5-95e6-13c7ee3e571e" />
+
+<img width="959" height="471" alt="3" src="https://github.com/user-attachments/assets/baa9782b-7e42-4e72-9ebd-70466022854a" />
+
+<img width="955" height="473" alt="4" src="https://github.com/user-attachments/assets/d6caff8e-b9e8-4b63-8e88-0f8e6243adf6" />
+
+<img width="959" height="471" alt="5" src="https://github.com/user-attachments/assets/804a329a-2159-402a-859b-f62703dad9dc" />
+
+<img width="959" height="474" alt="6" src="https://github.com/user-attachments/assets/3e5f8544-19a2-4fe7-921d-a054b735c7d8" />
+
+<img width="959" height="412" alt="7" src="https://github.com/user-attachments/assets/a5b113b4-9bb6-4d60-b051-f67c97d7e357" />
+
+<img width="959" height="413" alt="8" src="https://github.com/user-attachments/assets/ae0f6be8-62b6-4bd5-8f3f-15025763cfcb" />
+
+<img width="959" height="414" alt="9" src="https://github.com/user-attachments/assets/e1393e49-9c24-4bb7-a6fe-bfbbe5f29ecf" />
+
+<img width="959" height="413" alt="10" src="https://github.com/user-attachments/assets/b5ca9c6f-ec42-4fcf-b4ff-c8a747251bc9" />
+
+<img width="959" height="405" alt="11" src="https://github.com/user-attachments/assets/9e19d558-2e79-437e-a8ec-577cfd1b07a9" />
+
+<img width="959" height="409" alt="12" src="https://github.com/user-attachments/assets/59a9015f-6061-4800-b5c2-bb757ef0fb23" />
+
 
 <img width="959" height="470" alt="TableroKanban" src="https://github.com/user-attachments/assets/2c85fbba-a73f-4439-ad3b-dcd9602f52ad" />
 

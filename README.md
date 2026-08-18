@@ -82,7 +82,7 @@ Repositories
 MySQL Database
 ```
 
-## 🌐 Public Cloud API Access
+## Public Cloud API Access
 
 The QR Attendance System is publicly deployed on **Render**, providing access to the application's PHP-based API endpoints through the Internet.
 
